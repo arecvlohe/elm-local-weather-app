@@ -1,0 +1,17 @@
+{
+  "name": "elm-local-weather-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:elm": "elm make src/Main.elm --output dist/main.js",
+    "watch:elm": "chokidar '**/*.elm' -c 'npm run build:elm' --initial"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chokidar-cli": "^1.2.0",
+    "elm": "^0.18.0",
+    "standard": "^10.0.2"
+  }
+}
