@@ -7,23 +7,33 @@
   <title>Document</title>
 </head>
 <body>
+  <div>
+    <button onclick="getLocation()">Mind if you share your location?</button>
+  </div>
   <div id="main"></div>
   <script src="main.js"></script>
   <script>
     var node = document.getElementById('main')
     var app = Elm.Main.embed(node)
 
-    if (window.navigator.geolocation) {
-      window.navigator.geolocation.getCurrentPosition(function (position) {
-        const coords = position.coords
-        const latitude = coords.latitude
-        const longitude = coords.longitude
-        app.ports.position.send({ latitude, longitude })
-      }, function (err) {
-        const code = err.code
-        const message = err.message
-        app.ports.error.send({ code, message })
-      })
+    function getLocation() {
+      if (window.navigator.geolocation) {
+        window.navigator.geolocation.getCurrentPosition(success, failure)
+        app.ports.fetching.send(true)
+      }
+    }
+
+    function success(position) {
+      const coords = position.coords
+      const latitude = coords.latitude
+      const longitude = coords.longitude
+      app.ports.position.send({ latitude, longitude })
+    }
+
+    function failure(error) {
+       const code = error.code
+       const message = error.message
+       app.ports.error.send({ code, message })
     }
   </script>
 </body>

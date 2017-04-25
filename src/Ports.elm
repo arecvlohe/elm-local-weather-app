@@ -7,3 +7,6 @@ port position : (Position -> msg) -> Sub msg
 
 
 port error : (Error -> msg) -> Sub msg
+
+
+port fetching : (Bool -> msg) -> Sub msg
