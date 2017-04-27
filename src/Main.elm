@@ -13,11 +13,6 @@ import Json.Decode as Decode
 -- MODEL
 
 
-type Temp
-    = C
-    | F
-
-
 type Msg
     = NewPositionMsg Position
     | NewErrorMsg Error
