@@ -65,7 +65,7 @@ getTemperature model =
         ( lat, lng ) =
             ( toString model.position.latitude, toString model.position.longitude )
     in
-        Jsonp.get decodeTemperature ("https://api.darksky.net/forecast/***REMOVED***/" ++ lat ++ "," ++ lng)
+        Jsonp.get decodeTemperature ("https://api.darksky.net/forecast/YOUR_API_KEY/" ++ lat ++ "," ++ lng)
 
 
 makeCelsius : Float -> Int
